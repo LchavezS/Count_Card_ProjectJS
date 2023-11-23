@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count_Card_Project</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <script>
+/**
+In the blackjack casino game the player can take advantage of the house by keeping track of the relative number of high and low cards left in the deck.
+
+This is called card counting.
+
+Having more high cards in the draw is an advantage for the player. A value is assigned to each card according to the following table.
+
+1. When the count is positive, the player should bet high.
+2. When the count is negative, the player should bet low.
+
+Card Count Change
+==================================
++1 2, 3, 4, 5, 6
+0 7, 8, 9
+-1 10, 'J', 'Q', 'K', 'A'
+
+Our goal is to define a function for counting cards.
+
+The function must take a letter parameter which can be a number or a string of characters and then increase or decrease the value of the global variable count according to the value of the letter (look at the letter).
+
+The function should return a character string with the current count and the string:
+
+1. "Bet" if the count is positive.
+2. "Wait" if the count is zero or negative.
+
+The current count and the player's decision ("Bet" or "Wait") must be separated by a space.
+
+*/
+
+var counting = 0;
+
+function countCards (card){
+    var decision;
+    switch (card){
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        counting++;
+        break;
+
+        case 10:
+        case "J":
+        case "Q":
+        case "K":
+        case "A":
+        counting --;
+        break;
+
+    }
+
+    if (counting > 0){
+        decision = "You should bet"
+    } else {
+        decision = "You should wait";
+    }
+
+    return counting + " " + decision;
+
+}
+console.log(countCards(2));
+console.log(countCards(3));
+console.log(countCards(7));
+console.log(countCards("K"));
+console.log(countCards("A"));
+
+    </script>
+    
+</body>
+</html>
